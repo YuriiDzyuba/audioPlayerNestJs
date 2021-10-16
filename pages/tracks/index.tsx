@@ -65,7 +65,7 @@ const Tracks: NextPage = () => {
                         </Link>
                     </Stack>
                 </Stack>
-                <Divider />
+                <Divider sx={{ mb: 2 }} />
                 <TrackList tracks={tracks} />
             </Stack>
         </MainLayout>

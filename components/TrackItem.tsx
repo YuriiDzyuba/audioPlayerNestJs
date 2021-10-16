@@ -9,9 +9,11 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import PauseIcon from '@mui/icons-material/Pause';
 import SkipNextIcon from '@mui/icons-material/SkipNext';
 import Rating from '@mui/material/Rating';
 import MenuIcon from '@mui/icons-material/Menu';
+import Link from 'next/link';
 
 const TrackItem: React.FC<ITrackItem> = ({ track, active = false }) => {
     const theme = useTheme();
@@ -31,9 +33,16 @@ const TrackItem: React.FC<ITrackItem> = ({ track, active = false }) => {
                         <IconButton aria-label="previous">
                             {theme.direction === 'rtl' ? <SkipNextIcon /> : <SkipPreviousIcon />}
                         </IconButton>
-                        <IconButton aria-label="play/pause">
-                            <PlayArrowIcon sx={{ height: 38, width: 38 }} />
-                        </IconButton>
+                        {!active && (
+                            <IconButton aria-label="play/pause">
+                                <PlayArrowIcon sx={{ height: 38, width: 38 }} />
+                            </IconButton>
+                        )}
+                        {active && (
+                            <IconButton aria-label="play/pause">
+                                <PauseIcon sx={{ height: 38, width: 38 }} />
+                            </IconButton>
+                        )}
                         <IconButton aria-label="next">
                             {theme.direction === 'rtl' ? <SkipPreviousIcon /> : <SkipNextIcon />}
                         </IconButton>
@@ -52,14 +61,16 @@ const TrackItem: React.FC<ITrackItem> = ({ track, active = false }) => {
                         {track.listens}
                     </Typography>
                     <Rating sx={{ pr: 2 }} name="read-only" value={2} readOnly />
-                    <IconButton
-                        sx={{ border: '#1976d2 1px solid', mr: 2, ml: 2 }}
-                        color="info"
-                        aria-label="open drawer"
-                        edge="start"
-                    >
-                        <MenuIcon />
-                    </IconButton>
+                    <Link href={`/tracks/${track._id}`}>
+                        <IconButton
+                            sx={{ border: '#1976d2 1px solid', mr: 2, ml: 2 }}
+                            color="info"
+                            aria-label="open drawer"
+                            edge="start"
+                        >
+                            <MenuIcon />
+                        </IconButton>
+                    </Link>
                     <CardMedia
                         component="img"
                         sx={{ width: 151, height: 120 }}
