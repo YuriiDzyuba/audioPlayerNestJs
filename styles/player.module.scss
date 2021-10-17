@@ -1,0 +1,57 @@
+.player {
+  padding: .2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: gainsboro;
+  color: black;
+  text-align: center;
+}
+
+.player__left {
+  width: 35%;
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+}
+
+.player__right {
+  width: 65%;
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+}
+
+.player__volume {
+  width: 8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-right: .5rem;
+}
+
+.player__trackName {
+  padding: 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start
+}
+
+.player__durationText {
+  padding: 0 0.5rem;
+}
+
+.player__duration {
+  width: 85%;
+  max-width: 220rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}

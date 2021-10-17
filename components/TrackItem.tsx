@@ -14,9 +14,17 @@ import SkipNextIcon from '@mui/icons-material/SkipNext';
 import Rating from '@mui/material/Rating';
 import MenuIcon from '@mui/icons-material/Menu';
 import Link from 'next/link';
+import { useActions } from '../hooks/useActions';
+import { useTypedSelector } from '../hooks/useTypedSelector';
 
 const TrackItem: React.FC<ITrackItem> = ({ track, active = false }) => {
     const theme = useTheme();
+
+    const { pauseTrack, playTrack, SetActiveTrack } = useActions();
+
+    const play = () => {
+        SetActiveTrack(track);
+    };
     return (
         <>
             <Card
@@ -33,22 +41,19 @@ const TrackItem: React.FC<ITrackItem> = ({ track, active = false }) => {
                         <IconButton aria-label="previous">
                             {theme.direction === 'rtl' ? <SkipNextIcon /> : <SkipPreviousIcon />}
                         </IconButton>
-                        {!active && (
-                            <IconButton aria-label="play/pause">
+                        <IconButton onClick={play} aria-label="play/pause">
+                            {!active ? (
                                 <PlayArrowIcon sx={{ height: 38, width: 38 }} />
-                            </IconButton>
-                        )}
-                        {active && (
-                            <IconButton aria-label="play/pause">
+                            ) : (
                                 <PauseIcon sx={{ height: 38, width: 38 }} />
-                            </IconButton>
-                        )}
+                            )}
+                        </IconButton>
                         <IconButton aria-label="next">
                             {theme.direction === 'rtl' ? <SkipPreviousIcon /> : <SkipNextIcon />}
                         </IconButton>
                     </Box>
                     <CardContent sx={{ flex: '1 0 auto' }}>
-                        <Typography component="div" variant="h5">
+                        <Typography component="div" variant="h6">
                             {track.name}
                         </Typography>
                         <Typography variant="subtitle1" color="text.secondary" component="div">

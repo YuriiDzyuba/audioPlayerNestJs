@@ -1,8 +1,8 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 
 const AddNewTrackUploadImg = () => {
     return (
@@ -21,26 +21,10 @@ const AddNewTrackUploadImg = () => {
                 >
                     add Picture
                 </Typography>
-                <TextField
-                    sx={{ pb: 2, width: '100%' }}
-                    id="standard-basic"
-                    label="name"
-                    variant="standard"
-                />
-                <TextField
-                    sx={{ pb: 2, width: '100%' }}
-                    id="standard-basic"
-                    label="artist"
-                    variant="standard"
-                />
-                <TextField
-                    sx={{ pb: 2, mt: 2, width: '100%' }}
-                    id="outlined-multiline-static"
-                    label="text"
-                    multiline
-                    rows={4}
-                    defaultValue=""
-                />
+                <Button variant="contained" component="label">
+                    Upload File
+                    <input type="file" hidden />
+                </Button>
             </Grid>
         </Stack>
     );
